@@ -8,6 +8,8 @@ namespace DataStructures.Test
 {
     #region Usings
 
+    using System.Diagnostics;
+
     using DataStructures.LinkedList.Cycle;
     using DataStructures.LinkedList.Node;
     using DataStructures.LinkedList.SinglyLinked;
@@ -314,5 +316,39 @@ namespace DataStructures.Test
 
             Assert.AreEqual(list.FindFirstNode().Value, 10);
         }
+
+        /// <summary>
+        /// The batch test.
+        /// </summary>
+        [TestMethod]
+        public void BatchTest()
+        {
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                list.AddLast(new SinglyLinkedListNode<int>(i));
+            }
+
+            for (int i = 1; i < 10; i += 2)
+            {
+                list.AddAt(i, new SinglyLinkedListNode<int>(100 + i * i));
+            }
+
+
+            int count = list.Count();
+            for (int i = 0; i < count; i++)
+            {
+                if (i > 0)
+                {
+                    Debug.Write("-");
+                }
+
+                Debug.Write(list.FindAtIndex(i).Value);
+            }
+
+            Assert.IsTrue(true);
+        }
+
+
     }
 }

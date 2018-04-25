@@ -8,6 +8,8 @@ namespace DataStructures.Test
 {
     #region Usings
 
+    using System.Diagnostics;
+
     using DataStructures.LinkedList;
     using DataStructures.LinkedList.DoublyLinked;
     using DataStructures.LinkedList.Node;
@@ -237,6 +239,36 @@ namespace DataStructures.Test
             list.RemoveAt(0);
 
             Assert.AreEqual(list.IsEmpty(), true);
+        }
+
+
+        [TestMethod]
+        public void BatchTest()
+        {
+            IDoublyLinkedList<int> list = new DoublyLinkedList<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                list.AddLast(new DoublyLinkedListNode<int>(i));
+            }
+
+            for (int i = 1; i < 10; i += 2)
+            {
+                list.AddAt(i, new DoublyLinkedListNode<int>(100 + i * i));
+            }
+
+
+            int count = list.Count();
+            for (int i = 0; i < count; i++)
+            {
+                if (i > 0)
+                {
+                    Debug.Write("-");
+                }
+
+                Debug.Write(list.FindAtIndex(i).Value);
+            }
+
+            Assert.IsTrue(true);
         }
     }
 }

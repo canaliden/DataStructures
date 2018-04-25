@@ -49,7 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DoublyLinkedListTest.cs" />
-    <Compile Include="SingleLinkedListTest - Copy.cs" />
+    <Compile Include="StackTest.cs" />
+    <Compile Include="QueueTest.cs" />
     <Compile Include="SingleLinkedListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

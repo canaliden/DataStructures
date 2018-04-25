@@ -98,8 +98,8 @@ namespace DataStructures.LinkedList.DoublyLinked
                         {
                             newNode.NextNode = t.node;
                             newNode.PrevNode = t.node.PrevNode;
-                            t.node.PrevNode = newNode;
                             t.node.PrevNode.NextNode = newNode;
+                            t.node.PrevNode = newNode;
                         }
                     });
 
@@ -185,7 +185,12 @@ namespace DataStructures.LinkedList.DoublyLinked
             this.CheckNull(newNode);
 
             // find the last node and execute the action
-            var node = this.FindLastNode((t) => { t.node.NextNode = newNode; });
+            var node = this.FindLastNode(
+                (t) =>
+                    {
+                        t.node.NextNode = newNode;
+                        newNode.PrevNode = t.node;
+                    });
 
             if (node == null)
             {
@@ -369,7 +374,6 @@ namespace DataStructures.LinkedList.DoublyLinked
                         }
                         else
                         {
-                            t.node.PrevNode = null;
                             t.node.PrevNode.NextNode = null;
                         }
                     });
