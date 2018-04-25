@@ -1,17 +1,20 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="LinkedListNode.cs" company="Ali Can">
+// <copyright file="SinglyLinkedListNode.cs" company="Ali Can">
 //   Free to use
 // </copyright>
+// <summary>
+//   
+// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DataStructures.LinkedList
+namespace DataStructures.LinkedList.Node
 {
     /// <summary>
     /// The linked list node.
     /// </summary>
     /// <typeparam name="T">
     /// </typeparam>
-    public abstract class LinkedListNode<T>
+    public class SinglyLinkedListNode<T>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LinkedListNode{T}"/> class.
@@ -19,7 +22,7 @@ namespace DataStructures.LinkedList
         /// <param name="value">
         /// The value.
         /// </param>
-        public LinkedListNode(T value)
+        public SinglyLinkedListNode(T value)
         {
             this.Value = value;
         }
@@ -27,7 +30,7 @@ namespace DataStructures.LinkedList
         /// <summary>
         /// Gets the next node.
         /// </summary>
-        public LinkedListNode<T> NextNode { get; internal set; }
+        public SinglyLinkedListNode<T> NextNode { get; internal set; }
 
         /// <summary>
         /// Gets the value.
@@ -45,9 +48,9 @@ namespace DataStructures.LinkedList
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (obj is LinkedListNode<T>)
+            if (obj is SinglyLinkedListNode<T>)
             {
-                return this.Value.Equals(((LinkedListNode<T>)obj).Value);
+                return this.Value.Equals(((SinglyLinkedListNode<T>)obj).Value);
             }
 
             return false;

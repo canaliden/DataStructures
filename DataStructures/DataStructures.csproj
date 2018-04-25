@@ -45,22 +45,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LinkedList\DoublyLinked\IDoublyLinkedList.cs" />
+    <Compile Include="LinkedList\DoublyLinked\DoublyLinkedList.cs" />
     <Compile Include="LinkedList\Node\DoublyListNode.cs" />
-    <Compile Include="LinkedList\ILinkedList.cs" />
-    <Compile Include="LinkedList\Cycle\ILinkedListCycleDetector.cs" />
+    <Compile Include="LinkedList\SinglyLinked\ISinglyLinkedList.cs" />
+    <Compile Include="LinkedList\Cycle\ISinglyLinkedListCycleDetector.cs" />
     <Compile Include="LinkedList\Cycle\FloydsCycleDetection.cs" />
-    <Compile Include="LinkedList\Node\LinkedListNode.cs" />
-    <Compile Include="LinkedList\Output\ConsolePrint.cs" />
-    <Compile Include="LinkedList\Output\IPrint.cs" />
-    <Compile Include="LinkedList\SinglyLinkedList.cs" />
-    <Compile Include="LinkedList\Node\SinglyListNode.cs" />
+    <Compile Include="LinkedList\Node\SinglyLinkedListNode.cs" />
+    <Compile Include="LinkedList\Output\ConsoleSinglyLinkedListPrint.cs" />
+    <Compile Include="LinkedList\Output\ISinglyLinkedListPrint.cs" />
+    <Compile Include="LinkedList\SinglyLinked\SinglyLinkedList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="LinkedList\Sort\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

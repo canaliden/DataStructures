@@ -1,17 +1,19 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ILinkedList.cs" company="Ali Can">
+// <copyright file="ISinglyLinkedList.cs" company="Ali Can">
 //   Free to use
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DataStructures.LinkedList
+namespace DataStructures.LinkedList.SinglyLinked
 {
+    using DataStructures.LinkedList.Node;
+
     /// <summary>
     /// The LinkedList interface.
     /// </summary>
     /// <typeparam name="T">
     /// </typeparam>
-    public interface ILinkedList<T>
+    public interface ISinglyLinkedList<T>
     {
         /// <summary>
         /// The add after.
@@ -22,7 +24,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        void AddAfter(T value, LinkedListNode<T> newNode);
+        void AddAfter(T value ,   SinglyLinkedListNode<T> newNode);
 
         /// <summary>
         /// The add after.
@@ -33,7 +35,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        void AddAfter(LinkedListNode<T> value, LinkedListNode<T> newNode);
+        void AddAfter(SinglyLinkedListNode<T> value, SinglyLinkedListNode<T> newNode);
 
         /// <summary>
         /// The add at.
@@ -44,7 +46,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        void AddAt(int index, LinkedListNode<T> newNode);
+        void AddAt(int index, SinglyLinkedListNode<T> newNode);
 
         /// <summary>
         /// The add before.
@@ -55,7 +57,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        void AddBefore(T value, LinkedListNode<T> newNode);
+        void AddBefore(T value, SinglyLinkedListNode<T> newNode);
 
         /// <summary>
         /// The add before.
@@ -66,7 +68,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        void AddBefore(LinkedListNode<T> node, LinkedListNode<T> newNode);
+        void AddBefore(SinglyLinkedListNode<T> node, SinglyLinkedListNode<T> newNode);
 
         /// <summary>
         /// The add first.
@@ -74,7 +76,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        void AddFirst(LinkedListNode<T> newNode);
+        void AddFirst(SinglyLinkedListNode<T> newNode);
 
         /// <summary>
         /// The add last.
@@ -82,7 +84,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        void AddLast(LinkedListNode<T> newNode);
+        void AddLast(SinglyLinkedListNode<T> newNode);
 
         /// <summary>
         /// The count.
@@ -99,9 +101,9 @@ namespace DataStructures.LinkedList
         /// The value.
         /// </param>
         /// <returns>
-        /// The <see cref="LinkedListNode"/>.
+        /// The <see cref="SinglyLinkedListNode"/>.
         /// </returns>
-        LinkedListNode<T> Find(T value);
+        SinglyLinkedListNode<T> Find(T value);
 
         /// <summary>
         /// The find at ındex.
@@ -110,25 +112,25 @@ namespace DataStructures.LinkedList
         /// The index.
         /// </param>
         /// <returns>
-        /// The <see cref="LinkedListNode"/>.
+        /// The <see cref="SinglyLinkedListNode"/>.
         /// </returns>
-        LinkedListNode<T> FindAtIndex(int index);
+        SinglyLinkedListNode<T> FindAtIndex(int index);
 
         /// <summary>
         /// The find first node.
         /// </summary>
         /// <returns>
-        /// The <see cref="LinkedListNode"/>.
+        /// The <see cref="SinglyLinkedListNode"/>.
         /// </returns>
-        LinkedListNode<T> FindFirstNode();
+        SinglyLinkedListNode<T> FindFirstNode();
 
         /// <summary>
         /// The find last node.
         /// </summary>
         /// <returns>
-        /// The <see cref="LinkedListNode"/>.
+        /// The <see cref="SinglyLinkedListNode"/>.
         /// </returns>
-        LinkedListNode<T> FindLastNode();
+        SinglyLinkedListNode<T> FindLastNode();
 
         /// <summary>
         /// The ıs empty.

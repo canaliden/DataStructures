@@ -6,11 +6,15 @@
 
 namespace DataStructures.Test
 {
-    using System.Collections.Generic;
+    #region Usings
 
-    using DataStructures.LinkedList;
+    using DataStructures.LinkedList.Cycle;
+    using DataStructures.LinkedList.Node;
+    using DataStructures.LinkedList.SinglyLinked;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    #endregion
 
     /// <summary>
     ///     The single linked list test.
@@ -24,12 +28,12 @@ namespace DataStructures.Test
         [TestMethod]
         public void Count()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(1));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
             list.RemoveAt(0);
-            list.AddAt(0, new SinglyListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
 
             Assert.AreEqual(list.Count(), 3);
         }
@@ -40,11 +44,11 @@ namespace DataStructures.Test
         [TestMethod]
         public void Delete()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(12));
-            list.AddAt(0, new SinglyListNode<int>(13));
-            list.AddAt(0, new SinglyListNode<int>(14));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(12));
+            list.AddAt(0, new SinglyLinkedListNode<int>(13));
+            list.AddAt(0, new SinglyLinkedListNode<int>(14));
             list.Remove(1);
 
             Assert.AreEqual(list.FindLastNode()?.Value, 12);
@@ -56,11 +60,11 @@ namespace DataStructures.Test
         [TestMethod]
         public void DeleteAt()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(12));
-            list.AddAt(0, new SinglyListNode<int>(13));
-            list.AddAt(0, new SinglyListNode<int>(14));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(12));
+            list.AddAt(0, new SinglyLinkedListNode<int>(13));
+            list.AddAt(0, new SinglyLinkedListNode<int>(14));
             list.RemoveAt(0);
 
             Assert.AreEqual(list.FindFirstNode()?.Value, 13);
@@ -72,11 +76,11 @@ namespace DataStructures.Test
         [TestMethod]
         public void DeleteFirstNode()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(12));
-            list.AddAt(0, new SinglyListNode<int>(13));
-            list.AddAt(0, new SinglyListNode<int>(14));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(12));
+            list.AddAt(0, new SinglyLinkedListNode<int>(13));
+            list.AddAt(0, new SinglyLinkedListNode<int>(14));
             list.RemoveFirstNode();
 
             Assert.AreEqual(list.FindFirstNode()?.Value, 13);
@@ -88,11 +92,11 @@ namespace DataStructures.Test
         [TestMethod]
         public void DeleteLastNode()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(12));
-            list.AddAt(0, new SinglyListNode<int>(13));
-            list.AddAt(0, new SinglyListNode<int>(14));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(12));
+            list.AddAt(0, new SinglyLinkedListNode<int>(13));
+            list.AddAt(0, new SinglyLinkedListNode<int>(14));
             list.RemoveLastNode();
 
             Assert.AreEqual(list.FindLastNode()?.Value, 12);
@@ -104,11 +108,11 @@ namespace DataStructures.Test
         [TestMethod]
         public void Find()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(12));
-            list.AddAt(0, new SinglyListNode<int>(13));
-            list.AddAt(0, new SinglyListNode<int>(14));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(12));
+            list.AddAt(0, new SinglyLinkedListNode<int>(13));
+            list.AddAt(0, new SinglyLinkedListNode<int>(14));
 
             Assert.AreEqual(list.Find(12)?.Value, 12);
         }
@@ -119,11 +123,11 @@ namespace DataStructures.Test
         [TestMethod]
         public void FindAtIndex()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(12));
-            list.AddAt(0, new SinglyListNode<int>(13));
-            list.AddAt(0, new SinglyListNode<int>(14));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(12));
+            list.AddAt(0, new SinglyLinkedListNode<int>(13));
+            list.AddAt(0, new SinglyLinkedListNode<int>(14));
 
             Assert.AreEqual(list.FindAtIndex(2)?.Value, 12);
         }
@@ -134,11 +138,11 @@ namespace DataStructures.Test
         [TestMethod]
         public void FindFirstNode()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(12));
-            list.AddAt(0, new SinglyListNode<int>(13));
-            list.AddAt(0, new SinglyListNode<int>(14));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(12));
+            list.AddAt(0, new SinglyLinkedListNode<int>(13));
+            list.AddAt(0, new SinglyLinkedListNode<int>(14));
 
             Assert.AreEqual(list.FindFirstNode()?.Value, 14);
         }
@@ -149,11 +153,11 @@ namespace DataStructures.Test
         [TestMethod]
         public void FindLastNode()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(12));
-            list.AddAt(0, new SinglyListNode<int>(13));
-            list.AddAt(0, new SinglyListNode<int>(14));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(12));
+            list.AddAt(0, new SinglyLinkedListNode<int>(13));
+            list.AddAt(0, new SinglyLinkedListNode<int>(14));
 
             Assert.AreEqual(list.FindLastNode()?.Value, 1);
         }
@@ -164,22 +168,21 @@ namespace DataStructures.Test
         [TestMethod]
         public void HasCycle()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddLast(new SinglyListNode<int>(1));
-            list.AddLast(new SinglyListNode<int>(2));
-            list.AddLast(new SinglyListNode<int>(3));
-            list.AddLast(new SinglyListNode<int>(4));
-            list.AddLast(new SinglyListNode<int>(5));
-            list.AddLast(new SinglyListNode<int>(6));
-            list.AddLast(new SinglyListNode<int>(7));
-            list.AddLast(new SinglyListNode<int>(8));
-            list.AddLast(new SinglyListNode<int>(9));
-            list.AddLast(new SinglyListNode<int>(10));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddLast(new SinglyLinkedListNode<int>(1));
+            list.AddLast(new SinglyLinkedListNode<int>(2));
+            list.AddLast(new SinglyLinkedListNode<int>(3));
+            list.AddLast(new SinglyLinkedListNode<int>(4));
+            list.AddLast(new SinglyLinkedListNode<int>(5));
+            list.AddLast(new SinglyLinkedListNode<int>(6));
+            list.AddLast(new SinglyLinkedListNode<int>(7));
+            list.AddLast(new SinglyLinkedListNode<int>(8));
+            list.AddLast(new SinglyLinkedListNode<int>(9));
+            list.AddLast(new SinglyLinkedListNode<int>(10));
 
-            //var middle = list.Find(5);
-            //var lastNode = list.FindLastNode();
-            //lastNode.NextNode = middle;
-
+            // var middle = list.Find(5);
+            // var lastNode = list.FindLastNode();
+            // lastNode.NextNode = middle;
             var cycleHandler = new FloydsCycleDetection<int>();
 
             Assert.AreEqual(cycleHandler.HasCycle(list), false);
@@ -191,9 +194,9 @@ namespace DataStructures.Test
         [TestMethod]
         public void InsertAfter()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddFirst(new SinglyListNode<int>(22));
-            list.AddAfter(22, new SinglyListNode<int>(1));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddFirst(new SinglyLinkedListNode<int>(22));
+            list.AddAfter(22, new SinglyLinkedListNode<int>(1));
             Assert.AreEqual(list.FindLastNode().Value, 1);
         }
 
@@ -203,9 +206,9 @@ namespace DataStructures.Test
         [TestMethod]
         public void InsertAt()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(122));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(122));
             Assert.AreEqual(list.FindAtIndex(0).Value, 122);
         }
 
@@ -215,9 +218,9 @@ namespace DataStructures.Test
         [TestMethod]
         public void InsertBefore()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddBefore(1, new SinglyListNode<int>(122));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddBefore(1, new SinglyLinkedListNode<int>(122));
             Assert.AreEqual(list.FindAtIndex(0).Value, 122);
         }
 
@@ -227,8 +230,8 @@ namespace DataStructures.Test
         [TestMethod]
         public void InsertFirst()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddLast(new SinglyListNode<int>(1));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddLast(new SinglyLinkedListNode<int>(1));
             Assert.AreEqual(list.FindFirstNode()?.Value, 1);
         }
 
@@ -238,8 +241,8 @@ namespace DataStructures.Test
         [TestMethod]
         public void InsertLast()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddLast(new SinglyListNode<int>(221));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddLast(new SinglyLinkedListNode<int>(221));
             Assert.AreEqual(list.FindLastNode()?.Value, 221);
         }
 
@@ -249,11 +252,11 @@ namespace DataStructures.Test
         [TestMethod]
         public void IsEmpty()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(1));
-            list.AddAt(0, new SinglyListNode<int>(1));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
+            list.AddAt(0, new SinglyLinkedListNode<int>(1));
             list.RemoveAt(0);
             list.RemoveAt(0);
             list.RemoveAt(0);
@@ -268,22 +271,21 @@ namespace DataStructures.Test
         [TestMethod]
         public void RemoveCycle()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddLast(new SinglyListNode<int>(1));
-            list.AddLast(new SinglyListNode<int>(2));
-            list.AddLast(new SinglyListNode<int>(3));
-            list.AddLast(new SinglyListNode<int>(4));
-            list.AddLast(new SinglyListNode<int>(5));
-            list.AddLast(new SinglyListNode<int>(6));
-            list.AddLast(new SinglyListNode<int>(7));
-            list.AddLast(new SinglyListNode<int>(8));
-            list.AddLast(new SinglyListNode<int>(9));
-            list.AddLast(new SinglyListNode<int>(10));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddLast(new SinglyLinkedListNode<int>(1));
+            list.AddLast(new SinglyLinkedListNode<int>(2));
+            list.AddLast(new SinglyLinkedListNode<int>(3));
+            list.AddLast(new SinglyLinkedListNode<int>(4));
+            list.AddLast(new SinglyLinkedListNode<int>(5));
+            list.AddLast(new SinglyLinkedListNode<int>(6));
+            list.AddLast(new SinglyLinkedListNode<int>(7));
+            list.AddLast(new SinglyLinkedListNode<int>(8));
+            list.AddLast(new SinglyLinkedListNode<int>(9));
+            list.AddLast(new SinglyLinkedListNode<int>(10));
 
-            //var middle = list.Find(5);
-            //var lastNode = list.FindLastNode();
-            //lastNode.NextNode = middle;
-
+            // var middle = list.Find(5);
+            // var lastNode = list.FindLastNode();
+            // lastNode.NextNode = middle;
             var cycleHandler = new FloydsCycleDetection<int>();
             cycleHandler.RemoveCycle(list);
 
@@ -291,22 +293,22 @@ namespace DataStructures.Test
         }
 
         /// <summary>
-        /// The reverse.
+        ///     The reverse.
         /// </summary>
         [TestMethod]
         public void Reverse()
         {
-            ILinkedList<int> list = new SinglyLinkedList<int>();
-            list.AddLast(new SinglyListNode<int>(1));
-            list.AddLast(new SinglyListNode<int>(2));
-            list.AddLast(new SinglyListNode<int>(3));
-            list.AddLast(new SinglyListNode<int>(4));
-            list.AddLast(new SinglyListNode<int>(5));
-            list.AddLast(new SinglyListNode<int>(6));
-            list.AddLast(new SinglyListNode<int>(7));
-            list.AddLast(new SinglyListNode<int>(8));
-            list.AddLast(new SinglyListNode<int>(9));
-            list.AddLast(new SinglyListNode<int>(10));
+            ISinglyLinkedList<int> list = new SinglyLinkedList<int>();
+            list.AddLast(new SinglyLinkedListNode<int>(1));
+            list.AddLast(new SinglyLinkedListNode<int>(2));
+            list.AddLast(new SinglyLinkedListNode<int>(3));
+            list.AddLast(new SinglyLinkedListNode<int>(4));
+            list.AddLast(new SinglyLinkedListNode<int>(5));
+            list.AddLast(new SinglyLinkedListNode<int>(6));
+            list.AddLast(new SinglyLinkedListNode<int>(7));
+            list.AddLast(new SinglyLinkedListNode<int>(8));
+            list.AddLast(new SinglyLinkedListNode<int>(9));
+            list.AddLast(new SinglyLinkedListNode<int>(10));
 
             list.Reverse();
 

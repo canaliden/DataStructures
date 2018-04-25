@@ -5,14 +5,17 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DataStructures.LinkedList
+namespace DataStructures.LinkedList.Cycle
 {
+    using DataStructures.LinkedList.Node;
+    using DataStructures.LinkedList.SinglyLinked;
+
     /// <summary>
     /// The floyds cycle detection.
     /// </summary>
     /// <typeparam name="T">
     /// </typeparam>
-    public class FloydsCycleDetection<T> : ILinkedListCycleDetector<T>
+    public class FloydsCycleDetection<T> : ISinglyLinkedListCycleDetector<T>
     {
         /// <summary>
         /// The find cycle.
@@ -23,10 +26,10 @@ namespace DataStructures.LinkedList
         /// <returns>
         /// The <see cref="LinkedListNode"/>.
         /// </returns>
-        public LinkedListNode<T> FindCycle(ILinkedList<T> linkedList)
+        public SinglyLinkedListNode<T> FindCycle(ISinglyLinkedList<T> linkedList)
         {
             var firstNode = linkedList.FindFirstNode();
-            LinkedListNode<T> fast = firstNode, slow = firstNode;
+            SinglyLinkedListNode<T> fast = firstNode, slow = firstNode;
             if (fast?.NextNode == null)
             {
                 return null;
@@ -45,6 +48,7 @@ namespace DataStructures.LinkedList
 
             return null;
         }
+         
 
         /// <summary>
         /// The has cycle.
@@ -55,7 +59,7 @@ namespace DataStructures.LinkedList
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        public bool HasCycle(ILinkedList<T> linkedList)
+        public bool HasCycle(ISinglyLinkedList<T> linkedList)
         {
             var node = this.FindCycle(linkedList);
             return node != null;
@@ -67,7 +71,7 @@ namespace DataStructures.LinkedList
         /// <param name="linkedList">
         /// The linked list.
         /// </param>
-        public void RemoveCycle(ILinkedList<T> linkedList)
+        public void RemoveCycle(ISinglyLinkedList<T> linkedList)
         {
             var node = this.FindCycle(linkedList);
             if (node == null)
@@ -77,7 +81,7 @@ namespace DataStructures.LinkedList
 
             // find the length of the cycle
             int lengthOfCycle = 0;
-            LinkedListNode<T> fromMeetPoint = node;
+            SinglyLinkedListNode<T> fromMeetPoint = node;
             do
             {
                 lengthOfCycle++;

@@ -1,28 +1,34 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="SinglyLinkedList.cs" company="Ali Can">
+// <copyright file="DoublyLinkedList.cs" company="Ali Can">
 //   Free to use
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DataStructures.LinkedList
+namespace DataStructures.LinkedList.DoublyLinked
 {
     #region Usings
 
     using System;
 
+    using DataStructures.LinkedList.Node;
+
+    #region Usings
+
+    #endregion
+
     #endregion
 
     /// <summary>
-    /// The singly linked list.
+    /// The doubly linked list.
     /// </summary>
     /// <typeparam name="T">
     /// </typeparam>
-    public class SinglyLinkedList<T> : ILinkedList<T>
+    public class DoublyLinkedList<T> : IDoublyLinkedList<T>
     {
         /// <summary>
         /// The start.
         /// </summary>
-        private LinkedListNode<T> start;
+        private DoublyLinkedListNode<T> start;
 
         /// <summary>
         /// The add after.
@@ -33,9 +39,9 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        public void AddAfter(T value, LinkedListNode<T> newNode)
+        public void AddAfter(T value, DoublyLinkedListNode<T> newNode)
         {
-            this.AddAfter(new SinglyListNode<T>(value), newNode);
+            this.AddAfter(new DoublyLinkedListNode<T>(value), newNode);
         }
 
         /// <summary>
@@ -47,7 +53,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        public void AddAfter(LinkedListNode<T> value, LinkedListNode<T> newNode)
+        public void AddAfter(DoublyLinkedListNode<T> value, DoublyLinkedListNode<T> newNode)
         {
             // check for null
             this.CheckNull(newNode);
@@ -58,6 +64,7 @@ namespace DataStructures.LinkedList
                 (t) =>
                     {
                         newNode.NextNode = t.node.NextNode;
+                        newNode.PrevNode = t.node;
                         t.node.NextNode = newNode;
                     });
         }
@@ -71,7 +78,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        public void AddAt(int index, LinkedListNode<T> newNode)
+        public void AddAt(int index, DoublyLinkedListNode<T> newNode)
         {
             // check for null
             this.CheckNull(newNode);
@@ -81,15 +88,18 @@ namespace DataStructures.LinkedList
                 index,
                 (t) =>
                     {
-                        if (t.prevNode == null)
+                        if (t.node.PrevNode == null)
                         {
                             newNode.NextNode = t.node;
+                            t.node.PrevNode = newNode;
                             this.start = newNode;
                         }
                         else
                         {
-                            newNode.NextNode = t.prevNode.NextNode;
-                            t.prevNode.NextNode = newNode;
+                            newNode.NextNode = t.node;
+                            newNode.PrevNode = t.node.PrevNode;
+                            t.node.PrevNode = newNode;
+                            t.node.PrevNode.NextNode = newNode;
                         }
                     });
 
@@ -108,9 +118,9 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        public void AddBefore(T value, LinkedListNode<T> newNode)
+        public void AddBefore(T value, DoublyLinkedListNode<T> newNode)
         {
-            this.AddBefore(new SinglyListNode<T>(value), newNode);
+            this.AddBefore(new DoublyLinkedListNode<T>(value), newNode);
         }
 
         /// <summary>
@@ -122,7 +132,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        public void AddBefore(LinkedListNode<T> node, LinkedListNode<T> newNode)
+        public void AddBefore(DoublyLinkedListNode<T> node, DoublyLinkedListNode<T> newNode)
         {
             // check for null
             this.CheckNull(newNode);
@@ -132,15 +142,18 @@ namespace DataStructures.LinkedList
                 node,
                 (t) =>
                     {
-                        if (t.prevNode == null)
+                        if (t.node.PrevNode == null)
                         {
                             newNode.NextNode = t.node;
+                            t.node.PrevNode = newNode;
                             this.start = newNode;
                         }
                         else
                         {
-                            newNode.NextNode = t.prevNode.NextNode;
-                            t.prevNode.NextNode = newNode;
+                            newNode.NextNode = t.node;
+                            newNode.PrevNode = t.node.PrevNode;
+                            t.node.PrevNode = newNode;
+                            t.node.PrevNode.NextNode = newNode;
                         }
                     });
         }
@@ -151,7 +164,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        public void AddFirst(LinkedListNode<T> newNode)
+        public void AddFirst(DoublyLinkedListNode<T> newNode)
         {
             // check for null
             this.CheckNull(newNode);
@@ -166,7 +179,7 @@ namespace DataStructures.LinkedList
         /// <param name="newNode">
         /// The new node.
         /// </param>
-        public void AddLast(LinkedListNode<T> newNode)
+        public void AddLast(DoublyLinkedListNode<T> newNode)
         {
             // check for null
             this.CheckNull(newNode);
@@ -194,7 +207,7 @@ namespace DataStructures.LinkedList
             }
 
             int index = 1;
-            LinkedListNode<T> currentNode = this.start;
+            DoublyLinkedListNode<T> currentNode = this.start;
             while (currentNode.NextNode != null)
             {
                 index++;
@@ -211,11 +224,11 @@ namespace DataStructures.LinkedList
         /// The value.
         /// </param>
         /// <returns>
-        /// The <see cref="LinkedListNode"/>.
+        /// The <see cref="DoublyLinkedListNode"/>.
         /// </returns>
-        public LinkedListNode<T> Find(T value)
+        public DoublyLinkedListNode<T> Find(T value)
         {
-            var matchedNode = this.Find(new SinglyListNode<T>(value), null);
+            var matchedNode = this.Find(new DoublyLinkedListNode<T>(value), null);
             return matchedNode;
         }
 
@@ -226,9 +239,9 @@ namespace DataStructures.LinkedList
         /// The index.
         /// </param>
         /// <returns>
-        /// The <see cref="LinkedListNode"/>.
+        /// The <see cref="DoublyLinkedListNode"/>.
         /// </returns>
-        public LinkedListNode<T> FindAtIndex(int index)
+        public DoublyLinkedListNode<T> FindAtIndex(int index)
         {
             var nodeAtIndex = this.FindAtIndex(index, null);
             return nodeAtIndex;
@@ -238,9 +251,9 @@ namespace DataStructures.LinkedList
         /// The find first node.
         /// </summary>
         /// <returns>
-        /// The <see cref="LinkedListNode"/>.
+        /// The <see cref="DoublyLinkedListNode"/>.
         /// </returns>
-        public LinkedListNode<T> FindFirstNode()
+        public DoublyLinkedListNode<T> FindFirstNode()
         {
             return this.start;
         }
@@ -249,9 +262,9 @@ namespace DataStructures.LinkedList
         /// The find last node.
         /// </summary>
         /// <returns>
-        /// The <see cref="LinkedListNode"/>.
+        /// The <see cref="DoublyLinkedListNode"/>.
         /// </returns>
-        public LinkedListNode<T> FindLastNode()
+        public DoublyLinkedListNode<T> FindLastNode()
         {
             var lastNode = this.FindLastNode(null);
             return lastNode;
@@ -278,16 +291,21 @@ namespace DataStructures.LinkedList
         {
             // find and delete
             this.Find(
-                new SinglyListNode<T>(value),
+                new DoublyLinkedListNode<T>(value),
                 (t) =>
                     {
-                        if (t.prevNode == null)
+                        if (t.node.NextNode != null)
+                        {
+                            t.node.NextNode.PrevNode = t.node.PrevNode;
+                        }
+
+                        if (t.node.PrevNode == null)
                         {
                             this.start = t.node.NextNode;
                         }
                         else
                         {
-                            t.prevNode.NextNode = t.node.NextNode;
+                            t.node.PrevNode.NextNode = t.node.NextNode;
                         }
                     });
         }
@@ -305,13 +323,18 @@ namespace DataStructures.LinkedList
                 index,
                 (t) =>
                     {
-                        if (t.prevNode == null)
+                        if (t.node.NextNode != null)
+                        {
+                            t.node.NextNode.PrevNode = t.node.PrevNode;
+                        }
+
+                        if (t.node.PrevNode == null)
                         {
                             this.start = t.node.NextNode;
                         }
                         else
                         {
-                            t.prevNode.NextNode = t.node.NextNode;
+                            t.node.PrevNode.NextNode = t.node.NextNode;
                         }
                     });
         }
@@ -323,6 +346,11 @@ namespace DataStructures.LinkedList
         {
             if (this.start != null)
             {
+                if (this.start.NextNode != null)
+                {
+                    this.start.NextNode.PrevNode = null;
+                }
+
                 this.start = this.start.NextNode;
             }
         }
@@ -335,34 +363,16 @@ namespace DataStructures.LinkedList
             this.FindLastNode(
                 t =>
                     {
-                        if (t.prevNode == null)
+                        if (t.node.PrevNode == null)
                         {
                             this.start = null;
                         }
                         else
                         {
-                            t.prevNode.NextNode = null;
+                            t.node.PrevNode = null;
+                            t.node.PrevNode.NextNode = null;
                         }
                     });
-        }
-
-        /// <summary>
-        /// The reverse.
-        /// </summary>
-        public void Reverse()
-        {
-            LinkedListNode<T> prevNode = null;
-            LinkedListNode<T> node = this.start;
-
-            while (node != null)
-            {
-                LinkedListNode<T> nextNode = node.NextNode;
-                node.NextNode = prevNode;
-                prevNode = node;
-                node = nextNode;
-            }
-
-            this.start = prevNode;
         }
 
         /// <summary>
@@ -373,7 +383,7 @@ namespace DataStructures.LinkedList
         /// </param>
         /// <exception cref="Exception">
         /// </exception>
-        private void CheckNull(LinkedListNode<T> node)
+        private void CheckNull(DoublyLinkedListNode<T> node)
         {
             if (node == null)
             {
@@ -391,24 +401,22 @@ namespace DataStructures.LinkedList
         /// The action to execute.
         /// </param>
         /// <returns>
-        /// The <see cref="LinkedListNode"/>.
+        /// The <see cref="DoublyLinkedListNode"/>.
         /// </returns>
-        private LinkedListNode<T> Find(
-            LinkedListNode<T> nodeToFind,
-            Action<(LinkedListNode<T> node, LinkedListNode<T> prevNode, int index)> actionToExecute)
+        private DoublyLinkedListNode<T> Find(
+            DoublyLinkedListNode<T> nodeToFind,
+            Action<(DoublyLinkedListNode<T> node, int index)> actionToExecute)
         {
-            LinkedListNode<T> prevNode = null;
             var currentNode = this.start;
             int currentIndex = 0;
             while (currentNode != null)
             {
                 if (currentNode.Equals(nodeToFind))
                 {
-                    actionToExecute?.Invoke((currentNode, prevNode, currentIndex));
+                    actionToExecute?.Invoke((currentNode, currentIndex));
                     return currentNode;
                 }
 
-                prevNode = currentNode;
                 currentNode = currentNode.NextNode;
                 currentIndex++;
             }
@@ -426,24 +434,22 @@ namespace DataStructures.LinkedList
         /// The action to execute.
         /// </param>
         /// <returns>
-        /// The <see cref="LinkedListNode"/>.
+        /// The <see cref="DoublyLinkedListNode"/>.
         /// </returns>
-        private LinkedListNode<T> FindAtIndex(
+        private DoublyLinkedListNode<T> FindAtIndex(
             int index,
-            Action<(LinkedListNode<T> node, LinkedListNode<T> prevNode, int index)> actionToExecute)
+            Action<(DoublyLinkedListNode<T> node, int index)> actionToExecute)
         {
-            LinkedListNode<T> prevNode = null;
             var currentNode = this.start;
             int currentIndex = 0;
             while (currentNode != null)
             {
                 if (currentIndex == index)
                 {
-                    actionToExecute?.Invoke((currentNode, prevNode, currentIndex));
+                    actionToExecute?.Invoke((currentNode, currentIndex));
                     return currentNode;
                 }
 
-                prevNode = currentNode;
                 currentNode = currentNode.NextNode;
                 currentIndex++;
             }
@@ -458,24 +464,21 @@ namespace DataStructures.LinkedList
         /// The action to execute.
         /// </param>
         /// <returns>
-        /// The <see cref="LinkedListNode"/>.
+        /// The <see cref="DoublyLinkedListNode"/>.
         /// </returns>
-        private LinkedListNode<T> FindLastNode(
-            Action<(LinkedListNode<T> node, LinkedListNode<T> prevNode, int index)> actionToExecute)
+        private DoublyLinkedListNode<T> FindLastNode(Action<(DoublyLinkedListNode<T> node, int index)> actionToExecute)
         {
-            LinkedListNode<T> prevNode = null;
             var currentNode = this.start;
             int currentIndex = 0;
             while (currentNode?.NextNode != null)
             {
-                prevNode = currentNode;
                 currentNode = currentNode.NextNode;
                 currentIndex++;
             }
 
             if (currentNode != null)
             {
-                actionToExecute?.Invoke((currentNode, prevNode, currentIndex));
+                actionToExecute?.Invoke((currentNode, currentIndex));
             }
 
             return currentNode;

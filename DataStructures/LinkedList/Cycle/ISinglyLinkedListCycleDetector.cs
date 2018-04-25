@@ -1,17 +1,23 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="ILinkedListCycleDetector.cs" company="Ali Can">
+// <copyright file="ISinglyLinkedListCycleDetector.cs" company="Ali Can">
 //   Free to use
 // </copyright>
+// <summary>
+//   
+// </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DataStructures.LinkedList
+namespace DataStructures.LinkedList.Cycle
 {
+    using DataStructures.LinkedList.Node;
+    using DataStructures.LinkedList.SinglyLinked;
+
     /// <summary>
-    /// The LinkedListCycleDetector interface.
+    /// The SinglyLinkedListCycleDetector interface.
     /// </summary>
     /// <typeparam name="T">
     /// </typeparam>
-    public interface ILinkedListCycleDetector<T>
+    public interface ISinglyLinkedListCycleDetector<T>
     {
         /// <summary>
         /// The find cycle.
@@ -22,7 +28,7 @@ namespace DataStructures.LinkedList
         /// <returns>
         /// The <see cref="LinkedListNode"/>.
         /// </returns>
-        LinkedListNode<T> FindCycle(ILinkedList<T> linkedList);
+        SinglyLinkedListNode<T> FindCycle(ISinglyLinkedList<T> linkedList);
 
         /// <summary>
         /// The has cycle.
@@ -33,7 +39,7 @@ namespace DataStructures.LinkedList
         /// <returns>
         /// The <see cref="bool"/>.
         /// </returns>
-        bool HasCycle(ILinkedList<T> linkedList);
+        bool HasCycle(ISinglyLinkedList<T> linkedList);
 
         /// <summary>
         /// The remove cycle.
@@ -41,6 +47,6 @@ namespace DataStructures.LinkedList
         /// <param name="linkedList">
         /// The linked list.
         /// </param>
-        void RemoveCycle(ILinkedList<T> linkedList);
+        void RemoveCycle(ISinglyLinkedList<T> linkedList);
     }
 }

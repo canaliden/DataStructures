@@ -4,11 +4,13 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace DataStructures.LinkedList
+namespace DataStructures.LinkedList.Output
 {
     #region Usings
 
     using System;
+
+    using DataStructures.LinkedList.SinglyLinked;
 
     #endregion
 
@@ -17,7 +19,7 @@ namespace DataStructures.LinkedList
     /// </summary>
     /// <typeparam name="T">
     /// </typeparam>
-    public class ConsolePrint<T> : IPrint<T>
+    public class ConsoleSinglyLinkedListPrint<T> : ISinglyLinkedListPrint<T>
     {
         /// <summary>
         /// The print.
@@ -25,7 +27,7 @@ namespace DataStructures.LinkedList
         /// <param name="list">
         /// The list.
         /// </param>
-        public void Print(ILinkedList<T> list)
+        public void Print(ISinglyLinkedList<T> list)
         {
             if (list.IsEmpty())
             {
