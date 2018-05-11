@@ -55,9 +55,11 @@
     <Compile Include="LinkedList\Output\ConsoleSinglyLinkedListPrint.cs" />
     <Compile Include="LinkedList\Output\ISinglyLinkedListPrint.cs" />
     <Compile Include="LinkedList\SinglyLinked\SinglyLinkedList.cs" />
+    <Compile Include="PolishNotation\PolishNotationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queue\Queue.cs" />
     <Compile Include="Queue\IQueue.cs" />
+    <Compile Include="Recursion\CommonRecursionHelper.cs" />
     <Compile Include="Stack\Stack.cs" />
     <Compile Include="Stack\IStack.cs" />
   </ItemGroup>
