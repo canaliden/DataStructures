@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinaryTree\BinarySearchTree.cs" />
-    <Compile Include="Heap\Class1.cs" />
+    <Compile Include="Heap\HeapTree.cs" />
     <Compile Include="LinkedList\DoublyLinked\IDoublyLinkedList.cs" />
     <Compile Include="LinkedList\DoublyLinked\DoublyLinkedList.cs" />
     <Compile Include="LinkedList\Node\DoublyListNode.cs" />
